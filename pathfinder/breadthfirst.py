@@ -3,6 +3,7 @@ from util.graph import Node
 from maze.draw import DrawBuffer
 
 
+# Standard Breadth First Search
 def breadth_first_search(start: Node, end: Node, buffer: DrawBuffer, explore_color: tuple) -> list:
     visited = set()
 

@@ -4,7 +4,9 @@ from maze.draw import DrawBuffer
 from random import choice, choices
 
 
-# A pathfinder that travels randomly
+# A pathfinder that travels randomly to an unvisited node connected with the current node
+# If all such nodes are exhausted, it backtracks to the parent and repeats this process
+# until it reaches the exit to the maze
 def tourist(start: Node, end: Node, buffer: DrawBuffer, explore_color: tuple) -> list:
     visited = set()
 

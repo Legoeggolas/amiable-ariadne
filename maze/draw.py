@@ -1,11 +1,15 @@
 from collections import deque
 from typing import Any
 from util.graph import Node
-from time import sleep
 
 
+# This class helps store, retreive, and draw instructions directly onto the
+# graphical representation of the maze
 class DrawBuffer:
 
+    # An inner class that represents a single draw instruction
+    # Each instruction corresponds to a line being drawn between the two given nodes
+    # with the provided color
     class DrawBufferObj:
 
         def __init__(self, start: Node, end: Node, color: tuple) -> None:
@@ -28,17 +32,21 @@ class DrawBuffer:
         self.buffer = deque()
         self.img_data = data
 
+    # Pushes an instruction at the back of the queue
     def push(self, start: tuple, end: tuple, color: tuple) -> None:
         buffer_obj = DrawBuffer.DrawBufferObj(start, end, color)
         self.buffer.append(buffer_obj)
 
+    # Extracts an instruction from the front of the queue
     def pop(self) -> DrawBufferObj:
+        # In case there is nothing in the queue
         if not self.buffer:
             return None
 
         curr = self.buffer.popleft()
         return curr
 
+    # Draws the instruction to the image data
     def draw(self) -> None:
         curr = self.pop()
 

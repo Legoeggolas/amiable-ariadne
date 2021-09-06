@@ -5,6 +5,8 @@ from .tourist import tourist
 from util.inpututils import take_input
 
 
+# An interface class for all the pathfinder methods
+# Helps select which one is to be used outside of the submodule
 class Pathfinder:
 
     def __init__(self) -> None:

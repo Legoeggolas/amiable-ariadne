@@ -133,3 +133,6 @@ test.*
 
 # VSCode settings
 /.vscode
+
+# YAPF
+.style.yapf

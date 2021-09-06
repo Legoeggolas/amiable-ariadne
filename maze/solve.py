@@ -7,6 +7,9 @@ from math import floor
 from pathfinder.interface import Pathfinder
 
 
+# Helps manage all the methods required to work with and display
+# the graph processed by a MazeProcessor
+# Takes the graphical representation of the maze as well as its array representation
 class MazeSolver:
 
     def __init__(self, image: Image, maze: list) -> None:
@@ -28,6 +31,7 @@ class MazeSolver:
                 (r * i) / 1.5)))
             tail = path[i]
 
+    # Renders the maze as it is being solved
     def render(self, MAZE_SIZE: tuple, rate=1000):
         pathfinder = self.pathfinder.pick()
         pygame.init()

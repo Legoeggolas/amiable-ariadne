@@ -2,6 +2,8 @@ from util.graph import Node
 from collections import deque
 
 
+# Helps process the maze into a graph
+# Takes an array representation of the maze
 class MazeProcessor:
 
     def __init__(self, maze: list):

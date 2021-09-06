@@ -95,7 +95,7 @@ def main() -> None:
         if m_size == "small":
             maze_size = (choice(range(119, 337, 2)), choice(range(119, 175, 2)))
         elif m_size == "medium":
-            maze_size = (choice(range(337, 503, 2)), choice(range(125, 263, 2)))
+            maze_size = (choice(range(337, 503, 2)), choice(range(175, 263, 2)))
         else:
             maze_size = (choice(range(503, 753, 2)), choice(range(263, 393, 2)))
 
