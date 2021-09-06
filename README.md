@@ -41,12 +41,6 @@ python main.py
 
 # Usage
 
-```
-Enter the size of the maze (small/medium/large): medium
-Enter the type of maze you want: braid eller
-Enter the algorithm you wish to use: tourist
-```
-
 The first thing the script requires you to enter is the required size of the maze.
 This can be either of the three strings
 
@@ -86,6 +80,21 @@ The ones currently present are:
   and backtracks if all viable nodes have been exhausted
 
 When all three of these have been specified, the maze is solved in real time, the progress visible in a PyGame window.
+
+Example:
+
+```
+Enter the size of the maze (small/medium/large): small
+Enter the type of maze you want: unicursal
+Enter the algorithm you wish to use: tourist
+```
+
+This results in the following rendering:
+
+
+https://user-images.githubusercontent.com/55898978/132255741-bdbe42d7-bd61-49f7-808a-747607666ae8.mp4
+
+
 
 # Additional Notes
 
