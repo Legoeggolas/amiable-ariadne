@@ -1,6 +1,5 @@
-from graph import Node
+from util.graph import Node
 from collections import deque
-# unicursal has start and end at the first row
 
 
 class MazeProcessor:
@@ -9,7 +8,7 @@ class MazeProcessor:
         self.start = None
         self.end = None
         self.maze = maze
-        self.node_count = 0
+        self.process()
 
     def process(self):
         length = len(self.maze[0])
@@ -18,12 +17,16 @@ class MazeProcessor:
         row_last_node = None
 
         # Most mazes have their entrance in the first row
+        # Except for unicursal
         for col in range(0, length):
             if self.maze[0][col] == 0:
-                self.start = Node((0, col))
-                column_buffer[col] = self.start
-                row_last_node = self.start
-                break
+                if not self.start:
+                    self.start = Node((0, col))
+                    column_buffer[col] = self.start
+                else:
+                    self.end = Node((0, col))
+                    column_buffer[col] = self.end
+                    break
 
         # Iterate over the main body of the maze
         for row in range(1, width - 1):
@@ -109,27 +112,32 @@ class MazeProcessor:
                             # which should never happen
 
         # Most mazes have their exits in the last row
+        # But if the maze was a unicursal one, the end has already been found
+        if self.end:
+            return
         for col in range(0, length):
             if self.maze[width - 1][col] == 0:
                 self.end = Node((width - 1, col))
-
-                if row_last_node:
-                    self.end.neighbours[2] = row_last_node
-                    row_last_node.neighbours[3] = self.end
 
                 if column_buffer[col]:
                     self.end.neighbours[0] = column_buffer[col]
                     column_buffer[col].neighbours[1] = self.end
                 break
 
-    def draw_nodes(self):
-        q = deque()
-        q.append(self.start)
-        visited = dict()
-        while q:
-            temp = q.pop()
-            self.maze[temp.position[0]][temp.position[1]] = 0.75
-            visited[temp] = True
-            for node in temp.neighbours:
-                if node and node not in visited.keys():
-                    q.append(node)
+    # Debugging function
+    # Print the positions of all generated nodes, together with their neighbours
+    def _print_graph(self):
+        visited = set()
+        with open("test.txt", "w") as file:
+            q = deque()
+            q.append(self.start)
+
+            while q:
+                curr = q.popleft()
+                visited.add(curr)
+                file.write(
+                    f"{curr.position} : {[node.position if node else None for node in curr.neighbours]}\n"
+                )
+                for node in curr.neighbours:
+                    if node and node not in visited:
+                        q.append(node)
