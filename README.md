@@ -91,9 +91,7 @@ Enter the algorithm you wish to use: tourist
 
 This results in the following rendering:
 
-
-https://user-images.githubusercontent.com/55898978/132255741-bdbe42d7-bd61-49f7-808a-747607666ae8.mp4
-
+https://user-images.githubusercontent.com/55898978/132255865-f496ceea-89a3-4785-8f60-35156691c4b3.mp4
 
 
 # Additional Notes
